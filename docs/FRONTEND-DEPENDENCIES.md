@@ -13,3 +13,5 @@ This guard checks declared resources and local drift. It does not fetch external
 AOS 2.3.4 is served from `vendor/aos/`, with its MIT license. It replaces the floating `aos@next` CDN tag. The official npm tarball integrity was verified before extracting the two runtime files. Inter fonts still require Google Fonts connectivity.
 
 The previous unused Parcel 1 development graph produced 93 npm audit findings (3 low, 52 moderate, 28 high, 10 critical) on 2026-10-28. Removing that build-only graph leaves no npm dependencies; this is removal of unused tooling, not a claim that 93 shipped runtime defects were fixed. The checked-in static pages and assets remain the serving inputs. npm test invokes the actual Python checks instead of the previous failing placeholder.
+
+`npm run build` copies the two pages and their static asset directories into `dist/` using Node's standard library. `netlify.toml` explicitly selects this command and publish directory so deployment does not depend on an old dashboard build command or Parcel. CI also builds this artifact. No provider account settings are changed.

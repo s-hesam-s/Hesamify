@@ -31,3 +31,5 @@ jobs:
         run: npm test
       - name: Audit the dependency-free manifest
         run: npm audit --audit-level=low
+      - name: Build the static deployment artifact
+        run: npm run build
