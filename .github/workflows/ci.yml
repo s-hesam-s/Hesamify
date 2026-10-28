@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   pull_request:
+  schedule:
+    - cron: '20 4 * * 1'
   workflow_dispatch:
 
 permissions:
@@ -29,7 +31,37 @@ jobs:
           node-version: 24
       - name: Run static and dependency regression checks
         run: npm test
-      - name: Audit the dependency-free manifest
+      - name: Audit development test tooling
         run: npm audit --audit-level=low
       - name: Build the static deployment artifact
         run: npm run build
+
+      - name: Check tracked documentation destinations
+        run: python3 scripts/check_doc_links.py
+      - name: Test documentation link regressions
+        run: python3 -m unittest discover -s tests -p test_doc_links.py
+      - name: Validate advisory coverage
+        run: python3 scripts/check_advisories.py --offline
+      - name: Test advisory checker failure cases
+        run: python3 -m unittest discover -s tests -p test_advisories.py
+      - name: Check current runtime advisories
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/check_advisories.py
+
+  browser:
+    name: Browser interactions
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts --no-fund
+      - run: npm audit --audit-level=low
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
