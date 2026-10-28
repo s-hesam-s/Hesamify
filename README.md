@@ -40,17 +40,17 @@ python -m http.server 8000 --bind 127.0.0.1
 
 Open `http://127.0.0.1:8000/index.html`. Keep the terminal open while previewing and press Ctrl+C to stop it. No database or application backend is needed.
 
-The checked-in HTML/CSS can be previewed without installing npm packages. package.json contains legacy Parcel 1 tooling and package-lock.json; no start or build npm script is defined. The npm test script is an intentional failing placeholder, not a test suite. If you need the legacy bundler, use the locked dependency setup in a compatible Node environment; that tooling is not required for the static preview.
+The checked-in HTML/CSS and local AOS assets can be previewed without installing npm packages. The unused Parcel 1 development dependency and its old transitive lock entries were removed. No package installation or build step is required to serve these source pages. The optional npm test command now invokes the real static/dependency checks and their regression tests; it requires Python 3.
 
 ## External resources
 
-The pages reference resources from `fonts.googleapis.com`, `fonts.gstatic.com`, `unpkg.com`. Internet access is needed for the referenced CDN scripts, fonts or remote images; the repository is not a fully offline asset bundle. Third-party resource availability can affect the preview.
+The pages reference resources from `fonts.googleapis.com`, `fonts.gstatic.com`. Internet access is needed for the referenced CDN scripts, fonts or remote images; the repository is not a fully offline asset bundle. Third-party resource availability can affect the preview.
 
 ## Verification and limitations
 
 Check the navigation at narrow widths, pricing sections, component examples and scroll animations. The domain-search and pricing UI do not provision hosting or process payments.
 
-No automated behavior-test suite is included. Preview instructions are not a claim that every third-party widget is compatible with current CDN responses. Application services, persistent storage and deployment are outside this UI exercise.
+No automated browser-interaction suite is included; dependency-policy regressions run separately. Preview instructions are not a claim that every third-party widget is compatible with current CDN responses. Application services, persistent storage and deployment are outside this UI exercise.
 
 ## Project scope and reuse
 
@@ -61,3 +61,7 @@ This is an educational repository. The implementation notes describe the code in
 GitHub Actions checks root HTML documents for a doctype, document shell, nonempty title and duplicate IDs. It also verifies local href/src/poster targets, filename casing and HTML/SVG fragments using `python3 scripts/check_site.py`. Remote URLs and placeholder `#` links are not fetched; this is not a full HTML5 conformance, accessibility or browser interaction test. No npm installation, backend or deployment is involved.
 
 The [CI workflow](.github/workflows/ci.yml) runs for pull requests and pushes to `main`, and can be started manually. It uses read-only repository permissions and does not deploy the project.
+
+## Runtime dependency checks
+
+[Dependency inventory, local asset policy and verification commands](docs/FRONTEND-DEPENDENCIES.md) describe the exact runtime resources and CI guard.

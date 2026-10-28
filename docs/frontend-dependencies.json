@@ -1,0 +1,20 @@
+{
+  "scope": "Root HTML script/stylesheet references; local runtime hashes use LF-normalized bytes. This inventory is not a vulnerability database.",
+  "remoteResources": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap",
+      "dynamicFontStylesheet": true,
+      "reason": "Google Fonts returns browser-dependent CSS; no executable script exception is granted."
+    }
+  ],
+  "localAssets": [
+    {
+      "path": "vendor/aos/aos.css",
+      "sha256LF": "1aa8845fd06e475aefe733d4e55b36a92fcd487975049c8172341827ac9cc03e"
+    },
+    {
+      "path": "vendor/aos/aos.js",
+      "sha256LF": "a5005b2e414770fd5ccb40bc221a12771966d02b5c1f9c89da48bd8e3811d377"
+    }
+  ]
+}
