@@ -2,6 +2,14 @@
 
 An educational responsive hosting-company landing page built with HTML, CSS and small JavaScript interactions.
 
+## Captured preview
+
+<picture><source media="(prefers-reduced-motion: reduce)" srcset="docs/screenshots/portfolio-poster.png" /><source type="image/webp" srcset="docs/screenshots/portfolio.webp" /><img src="docs/screenshots/portfolio.gif" width="100%" alt="Hesamify — actual captured UI states" /></picture>
+
+Hosting landing-page hero and pricing layout. Educational UI; search and purchase controls do not provision hosting.
+
+[Reproduce this capture and view the static image](docs/PORTFOLIO-PREVIEW.md) · [Mobile capture](docs/screenshots/portfolio-mobile.png)
+
 ## Included UI
 
 - Hosting hero, domain-search layout, pricing cards and feature sections.
