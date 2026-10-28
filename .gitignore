@@ -2,3 +2,5 @@ node_modules/
 dist/
 .cache/
 package-lock.json/
+__pycache__/
+*.py[cod]

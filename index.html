@@ -20,7 +20,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="CSS/styles.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="vendor/aos/aos.css" />
+      <noscript><style>[data-aos] { opacity: 1 !important; transform: none !important; }</style></noscript>
   </head>
   <body>
     <!-- h${Heading $}*3 -->
@@ -484,9 +485,10 @@
     </footer>
 
     <script src="Js/main.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="vendor/aos/aos.js"></script>
     <script>
-      AOS.init();
+      if (window.AOS) AOS.init();
+      else document.querySelectorAll("[data-aos]").forEach(item => item.removeAttribute("data-aos"));
     </script>
   </body>
 </html>

@@ -23,5 +23,13 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Check HTML documents and local targets
-        run: python3 scripts/check_site.py
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+      - name: Run static and dependency regression checks
+        run: npm test
+      - name: Audit the dependency-free manifest
+        run: npm audit --audit-level=low
+      - name: Build the static deployment artifact
+        run: npm run build

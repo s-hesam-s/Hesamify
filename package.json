@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/build_site.mjs",
+    "test": "python scripts/check_site.py && python scripts/check_dependencies.py && python -m unittest discover -s tests -p test_dependencies.py"
   },
   "repository": {
     "type": "git",
@@ -15,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/hesam13701991/Hesamify/issues"
   },
-  "homepage": "https://github.com/hesam13701991/Hesamify#readme",
-  "devDependencies": {
-    "parcel-bundler": "^1.12.5"
-  }
+  "homepage": "https://github.com/hesam13701991/Hesamify#readme"
 }
