@@ -1,0 +1,14 @@
+{
+  "scope": "Exact declared runtime packages. GitHub-reviewed non-withdrawn advisories; npm audit separately covers locked build dependencies. Not a recursive CDN CSS scan.",
+  "packages": [
+    {
+      "name": "aos",
+      "version": "2.3.4",
+      "resources": [],
+      "files": [
+        "vendor/aos/aos.js",
+        "vendor/aos/aos.css"
+      ]
+    }
+  ]
+}
